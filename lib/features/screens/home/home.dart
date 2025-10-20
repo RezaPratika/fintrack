@@ -63,7 +63,7 @@ class Home extends StatelessWidget {
                     "Budget Summary",
                     style: TextTheme.of(
                       context,
-                    ).bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+                    ).bodyMedium?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10),
                   CategoryCard(
