@@ -60,10 +60,91 @@ class _BudgetcardState extends State<Budgetcard> {
                   ),
                 ],
               ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.more_vert),
-                iconSize: 15,
+              PopupMenuButton<String>(
+                icon: const Icon(Icons.more_vert, size: 18),
+                color: Colors.white, // background color of the popup
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                elevation: 6,
+                position: PopupMenuPosition.under,
+                itemBuilder:
+                    (context) => [
+                      // 🖊️ Edit Budget
+                      PopupMenuItem(
+                        value: 'edit',
+                        height: 36,
+                        child: Row(
+                          children: const [
+                            Icon(
+                              Icons.edit_outlined,
+                              size: 18,
+                              color: Colors.black87,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Edit Budget',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // 📋 View Details
+                      PopupMenuItem(
+                        value: 'view',
+                        height: 36,
+                        child: Row(
+                          children: const [
+                            Icon(
+                              Icons.description_outlined,
+                              size: 18,
+                              color: Colors.black87,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'View Details',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // 🗑️ Delete Category (red)
+                      PopupMenuItem(
+                        value: 'delete',
+                        height: 36,
+                        child: Row(
+                          children: const [
+                            Icon(
+                              Icons.delete_outline,
+                              size: 18,
+                              color: Colors.red,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Delete Category',
+                              style: TextStyle(fontSize: 14, color: Colors.red),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                onSelected: (value) {
+                  if (value == 'edit') {
+                    // Handle edit
+                  } else if (value == 'view') {
+                    // Handle view
+                  } else if (value == 'delete') {
+                    // Handle delete
+                  }
+                },
               ),
             ],
           ),

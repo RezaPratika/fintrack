@@ -43,7 +43,8 @@ class _BottomnavbarState extends State<BottomNavBar> {
           tabs: const [
             GButton(icon: Icons.home, text: 'Home'),
             GButton(icon: Icons.account_balance_wallet, text: 'Budget'),
-            GButton(icon: Icons.book, text: 'History'),
+            GButton(icon: Icons.insert_chart, text: 'Stats'),
+            // GButton(icon: Icons.book, text: 'History'),
             GButton(icon: Icons.settings, text: 'Settings'),
           ],
         ),
