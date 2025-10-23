@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_management/cores/theme.dart';
 import 'package:money_management/features/screens/budget/budget.dart';
 import 'package:money_management/features/screens/home/home.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -13,14 +14,64 @@ class BottomNavBar extends StatefulWidget {
 class _BottomnavbarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [BudgetPage(), Home()];
+  final List<Widget> _pages = const [Home(), BudgetPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton:
+          _selectedIndex == 0
+              ? FloatingActionButton(
+                shape: CircleBorder(),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        title: const Text('Add New Item'),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextField(
+                              decoration: const InputDecoration(
+                                labelText: 'Title',
+                              ),
+                            ),
+                            TextField(
+                              decoration: const InputDecoration(
+                                labelText: 'Amount',
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('Cancel'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              // save action here
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Save'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Icon(Icons.add, color: Colors.white),
+                backgroundColor: AppTheme.secondaryColor,
+              )
+              : null,
       appBar: AppBar(
-        leading: Image.network(
-          "https://png.pngtree.com/png-clipart/20210606/original/pngtree-sign-free-icon-png-image_6387608.jpg",
-        ),
+        // leading: Image.network(
+        //   "https://png.pngtree.com/png-clipart/20210606/original/pngtree-sign-free-icon-png-image_6387608.jpg",
+        // ),
         title: Text(
           'FinTrack',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
